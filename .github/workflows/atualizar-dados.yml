@@ -1,0 +1,46 @@
+name: Atualizar dados do painel
+
+on:
+  schedule:
+    - cron: "7 * * * *"   # a cada hora (minuto 7, UTC)
+  workflow_dispatch:       # botão "Run workflow" para atualizar na hora
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atualizar-dados
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Instalar criptografia
+        run: pip install --quiet cryptography
+
+      - name: Buscar dados no Windsor.ai (Meta + Google)
+        env:
+          WINDSOR_API_KEY: ${{ secrets.WINDSOR_API_KEY }}
+          PAINEL_SENHA: ${{ secrets.PAINEL_SENHA }}   # senha de gestor: com ela, os dados saem criptografados
+        run: python scripts/fetch_windsor.py
+
+      - name: Commitar dados se mudaram
+        run: |
+          git config user.name "painel-bot"
+          git config user.email "painel-bot@users.noreply.github.com"
+          # metrics.json (aberto) ou metrics.enc.json (criptografado): adiciona o que existir e registra o que foi apagado
+          for f in metrics.json metrics.enc.json assets; do git add -A -- "$f" 2>/dev/null || true; done
+          if git diff --cached --quiet; then
+            echo "Sem mudanças nos dados."
+          else
+            git commit -m "Atualiza dados (Windsor.ai)"
+            git pull --rebase
+            git push
+          fi
