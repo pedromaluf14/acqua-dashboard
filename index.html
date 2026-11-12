@@ -1012,7 +1012,9 @@ function renderVG(){
 }
 function renderSaldo(){
   const A=M.account||{}, box=$('#kpi-saldo');
-  if (!A.spendCap){ $('#saldo-valor').textContent='sem limite'; $('#saldo-dias').textContent=''; $('#saldo-ritmo').textContent=''; $('#saldo-fill').style.width='0'; return; }
+  /* conta sem limite de gastos: não há fundos a mostrar, o card some e os outros três ocupam a linha */
+  const noCap=!A.spendCap; box.hidden=noCap; box.parentElement.classList.toggle('kpis-3',noCap);
+  if (noCap) return;
   /* "Fundos disponíveis" do Gerenciador = limite − gasto + gasto ainda não cobrado (account_balance).
      Os dias de autonomia usam limite − gasto, porque o não cobrado ainda vai sair. */
   const fundos=A.spendCap-A.amountSpent+(A.balance||0), saldo=A.spendCap-A.amountSpent, ritmo=ACC.cur.spend/7, dias=ritmo>0?saldo/ritmo:Infinity;
