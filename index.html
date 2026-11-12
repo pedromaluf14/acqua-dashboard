@@ -500,12 +500,12 @@ textarea.ld-input{ min-height:96px; resize:vertical; font:inherit; }
     </div>
     <section class="hero">
       <div class="hero-top">
-        <span class="tag mono"><span class="v">META ADS</span>Painel de campanhas<span class="live"></span></span>
+        <span class="tag mono"><span class="v">META + GOOGLE</span>Painel de campanhas<span class="live"></span></span>
         <dl class="readout mono">
           <div><dt>CONTA</dt><dd>acqua ibiúna</dd></div>
           <div><dt>ATUALIZADO</dt><dd id="ro-updated">—</dd></div>
           <div><dt>CONJUNTOS</dt><dd id="ro-camps">—</dd></div>
-          <div><dt>ORÇAMENTO/DIA</dt><dd id="ro-budget" style="text-transform:none">—</dd></div>
+          <div><dt>ORÇ./DIA META</dt><dd id="ro-budget" style="text-transform:none">—</dd></div>
           <div><dt>STATUS</dt><dd id="ro-status">—</dd></div>
         </dl>
       </div>
@@ -514,7 +514,7 @@ textarea.ld-input{ min-height:96px; resize:vertical; font:inherit; }
       <p class="summary" id="vg-summary"></p>
 
       <div class="filter-row">
-        <select id="vg-product" class="pill-select" aria-label="Filtrar por conjunto"></select>
+        <select id="vg-product" class="pill-select" aria-label="Filtrar por plataforma ou conjunto"></select>
         <div class="seg" id="vg-periods">
           <button type="button" class="seg-btn active" data-p="cur" title="Os 7 dias completos mais recentes. O dia de hoje não entra.">Últimos 7 dias</button>
           <button type="button" class="seg-btn" data-p="month" title="Do dia 1 até ontem, comparado com o mesmo período do mês anterior. O dia de hoje não entra.">Este mês</button>
@@ -530,8 +530,8 @@ textarea.ld-input{ min-height:96px; resize:vertical; font:inherit; }
       </div>
 
       <div class="kpis">
-        <div class="kpi glass"><span class="label mono">INVESTIMENTO <span class="help" tabindex="0" role="note" aria-label="Quanto foi gasto nos anúncios no período, segundo o Meta." data-tip="Quanto foi gasto nos anúncios no período, segundo o Meta.">?</span></span><span class="value mono" id="vg-spend">—</span><span class="delta" id="vg-spend-d"></span></div>
-        <div class="kpi glass"><span class="label mono">CUSTO POR LEAD <span class="help" tabindex="0" role="note" aria-label="Quanto custou, em média, cada pessoa que deixou o contato: investimento dividido pelos leads." data-tip="Quanto custou, em média, cada pessoa que deixou o contato: investimento dividido pelos leads.">?</span></span><span class="value mono" id="vg-cpl">—</span><span class="delta" id="vg-cpl-d"></span></div>
+        <div class="kpi glass"><span class="label mono">INVESTIMENTO <span class="help" tabindex="0" role="note" aria-label="Quanto foi gasto nos anúncios no período: Meta Ads + Google Ads (ou só o conjunto filtrado)." data-tip="Quanto foi gasto nos anúncios no período: Meta Ads + Google Ads (ou só o conjunto filtrado).">?</span></span><span class="value mono" id="vg-spend">—</span><span class="delta" id="vg-spend-d"></span></div>
+        <div class="kpi glass"><span class="label mono">CUSTO POR LEAD <span class="help" tabindex="0" role="note" aria-label="Quanto custou, em média, cada lead: investimento dividido pelos leads. Na visão completa, soma Meta (formulários) e Google (conversões)." data-tip="Quanto custou, em média, cada lead: investimento dividido pelos leads. Na visão completa, soma Meta (formulários) e Google (conversões).">?</span></span><span class="value mono" id="vg-cpl">—</span><span class="delta" id="vg-cpl-d"></span></div>
         <div class="kpi glass"><span class="label mono">HOJE ATÉ AGORA <span class="help" tabindex="0" role="note" aria-label="Resultados de hoje até a última atualização. O dia ainda não terminou, por isso fica fora dos outros números." data-tip="Resultados de hoje até a última atualização. O dia ainda não terminou, por isso fica fora dos outros números.">?</span></span><span class="value mono" id="today-leads">—</span><span class="delta"><span class="prev" id="today-spend"></span></span></div>
         <div class="kpi glass kpi-saldo" id="kpi-saldo"><span class="label mono">FUNDOS DISPONÍVEIS <span class="help" tabindex="0" role="note" aria-label="Mesmo valor de “Fundos disponíveis” no Gerenciador de Anúncios: limite de gastos menos o valor gasto, mais o que já foi gasto e ainda não foi cobrado. A estimativa de dias usa só o limite menos o valor gasto, pelo gasto médio da última semana." data-tip="Mesmo valor de “Fundos disponíveis” no Gerenciador de Anúncios: limite de gastos menos o valor gasto, mais o que já foi gasto e ainda não foi cobrado. A estimativa de dias usa só o limite menos o valor gasto, pelo gasto médio da última semana.">?</span></span><span class="value mono" id="saldo-valor">—</span>
           <div class="track"><div class="fill" id="saldo-fill"></div></div>
@@ -546,7 +546,7 @@ textarea.ld-input{ min-height:96px; resize:vertical; font:inherit; }
 
     <section class="card vg-all" id="hub">
       <div class="card-h"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span>
-        <div><h2>Meta + Google no período</h2><span class="card-sub" id="hub-sub"></span></div></div>
+        <div><h2>Meta x Google no período</h2><span class="card-sub" id="hub-sub"></span></div></div>
       <div class="hub-grid">
         <div class="hub-col"><span class="hub-h mono">META ADS</span><span class="hub-v mono" id="hub-m-spend">—</span><span class="hub-l" id="hub-m-res">—</span></div>
         <div class="hub-col"><span class="hub-h mono">GOOGLE ADS</span><span class="hub-v mono" id="hub-g-spend">—</span><span class="hub-l" id="hub-g-res">—</span></div>
@@ -577,7 +577,7 @@ textarea.ld-input{ min-height:96px; resize:vertical; font:inherit; }
 
     <section class="card vg-all">
       <div class="card-h"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-7h6v7"/></svg></span>
-        <div><h2>Conjuntos</h2><span class="card-sub" id="rank-sub"></span></div></div>
+        <div><h2>Conjuntos do Meta</h2><span class="card-sub" id="rank-sub"></span></div></div>
       <ol class="rank" id="rank"></ol>
       <button type="button" class="more" id="rank-more" hidden></button>
     </section>
@@ -590,7 +590,7 @@ textarea.ld-input{ min-height:96px; resize:vertical; font:inherit; }
 
     <section class="card vg-all">
       <div class="card-h"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14c2 .6 3 2.8 3 6"/></svg></span>
-        <div><h2>Quem virou lead</h2><span class="card-sub" id="who-sub">Últimos 7 dias</span></div></div>
+        <div><h2>Quem virou lead no Meta</h2><span class="card-sub" id="who-sub">Últimos 7 dias</span></div></div>
       <div class="donuts four">
         <div class="dpanel"><h3 class="mono">GÊNERO</h3><svg viewBox="0 0 120 120" class="donut" id="d-gender"></svg><div class="dleg" id="l-gender"></div></div>
         <div class="dpanel"><h3 class="mono">IDADE</h3><svg viewBox="0 0 120 120" class="donut" id="d-age"></svg><div class="dleg" id="l-age"></div></div>
@@ -914,7 +914,7 @@ function lineChart(svg, series, opts={}){
   const tip=$('#tip'), cross=svg.querySelector('.cross');
   svg.querySelectorAll('.hit').forEach(h=>{
     const show=()=>{ const i=+h.dataset.i; cross.setAttribute('x1',x(i)); cross.setAttribute('x2',x(i)); cross.style.opacity=1;
-      tip.innerHTML=`<b>${longDay(days[i],{weekday:'short',day:'numeric',month:'short'})}</b><br>${(opts.fmt||leadsTxt)(series[i])}`+(opts.spend?`<br>${brl(opts.spend[i])} investidos`:'');
+      tip.innerHTML=`<b>${longDay(days[i],{weekday:'short',day:'numeric',month:'short'})}</b><br>${(opts.fmt||leadsTxt)(series[i],i)}`+(opts.spend?`<br>${brl(opts.spend[i])} investidos`:'');
       tip.classList.add('show'); };
     h.addEventListener('pointerenter',show);
     h.addEventListener('pointermove',e=>{ show(); tip.style.left=e.clientX+'px'; tip.style.top=(e.clientY-14)+'px'; });
@@ -972,7 +972,7 @@ function summary(isAll,e,m,o){
     return `${e.label} teve ${leadsTxt(m.leads)}${cost} ${when}.${up}`;
   }
   const lead = vgPeriod==='cur'?'Semana':vgPeriod==='month'?`${cap1(mesNome)}, até ontem,`:'Período';
-  let txt=`${lead} com ${leadsTxt(m.leads)}${cost}.`;
+  let txt=`${lead} com ${leadsTxt(Math.round(m.leads))}${cost}`+(m.gLeads!=null?`: ${int(m.mLeads)} do Meta e ${int(m.gLeads)} do Google.`:'.');
   if (vgPeriod==='cur'){
     const top=prods.slice().sort((a,b)=>b.cur.leads-a.cur.leads)[0];
     if (top && top.cur.leads>0){ txt+=` ${top.label} liderou com ${leadsTxt(top.cur.leads)}`;
@@ -988,24 +988,36 @@ function summary(isAll,e,m,o){
   }
   return txt;
 }
+/* Visão geral completa = Meta + Google: leads do Meta (formulário) + conversões do Google.
+   "Só Meta Ads" e os conjuntos mostram só o Meta. */
+const mix=(m,g)=>m&&g?{ spend:m.spend+g.spend, impr:m.impr+g.impr, clicks:m.clicks+g.clicks, leads:m.leads+g.conv, mLeads:m.leads, gLeads:g.conv, mSpend:m.spend, gSpend:g.spend }:m;
 function renderVG(){
-  const isAll=vgProduct==='all', e=isAll?ACC:byId[vgProduct], V=vgData(e), m=V.m, o=cmpOn?V.o:null;
-  $('#vg-period').textContent = periodLabel(V.R, cmpOn) + (isAll?'':' · '+e.label+(e.ended?' (encerrado)':''));
-  $('#vg-clear').hidden = isAll && vgPeriod==='cur';
+  const both=vgProduct==='all', isAll=both||vgProduct==='meta', e=isAll?ACC:byId[vgProduct], V=vgData(e);
+  let m=V.m, o=cmpOn?V.o:null, today=e.today;
+  if (both){
+    m=mix(V.m, gAgg(V.R.a,V.R.b)); o=cmpOn&&V.o?mix(V.o, gAgg(V.R.pa,V.R.pb)):null; today=mix(e.today, gAgg(T,T));
+    const gs=gSer(V.days,3), gsp=gSer(V.days,0), ms=V.series;
+    V.series=ms.map((v,i)=>v+gs[i]); V.spend=V.spend.map((v,i)=>v+gsp[i]);
+    V.fmt=(v,i)=>`${leadsTxt(Math.round(v))}<br><span style="opacity:.7">Meta ${int(ms[i])} · Google ${convNum(gs[i])}</span>`;
+  }
+  $('#vg-period').textContent = periodLabel(V.R, cmpOn) + (both?'':isAll?' · só Meta Ads':' · '+e.label+(e.ended?' (encerrado)':''));
+  $('#vg-clear').hidden = both && vgPeriod==='cur';
+  $('.hero .tag .v').textContent = both?'META + GOOGLE':'META ADS';
   $('#vg-leads').textContent=int(m.leads);
   $('#vg-title-period').textContent = vgPeriod==='cur'?'nos últimos 7 dias':vgPeriod==='month'?`em ${monthName(MON[0])}`:(V.R.a===V.R.b?`em ${fD(V.R.a)}`:`de ${fRange(V.R.a,V.R.b)}`);
   $('#vg-summary').textContent = summary(isAll,e,m,o);
-  $('#today-leads').textContent=leadsTxt(e.today.leads); $('#today-spend').textContent=brl(e.today.spend)+' investidos';
-  $('#vg-leads-d').innerHTML = o ? `<span class="prev">${int(o.leads)} no período anterior</span>`+(o.leads?chg(m.leads/o.leads-1,true):'') : '';
+  $('#today-leads').textContent=leadsTxt(Math.round(today.leads)); $('#today-spend').textContent=brl(today.spend)+' investidos';
+  $('#vg-leads-d').innerHTML = (both?`<span class="prev">${int(m.mLeads)} Meta + ${int(m.gLeads)} Google${o?' ·':''}</span> `:'')
+    + (o ? `<span class="prev">${int(o.leads)} no período anterior</span>`+(o.leads?chg(m.leads/o.leads-1,true):'') : '');
   $('#vg-spend').textContent=brl(m.spend);
   $('#vg-spend-d').innerHTML=o&&o.spend?chg(m.spend/o.spend-1,null)+`<span class="prev">${brl(o.spend)} antes</span>`:'';
   const c=cpl(m.spend,m.leads), co=o?cpl(o.spend,o.leads):null;
   $('#vg-cpl').textContent=c?brl(c,2):'—'; $('#vg-cpl-d').innerHTML=c&&co?chg(c/co-1,false)+`<span class="prev">${brl(co,2)} antes</span>`:'';
-  lineChart($('#vg-chart'), V.series, { sel:V.sel, spend:V.spend, days:V.days });
-  renderSec('vg', m, o); $('#vg-sec-sub').textContent=(isAll?'Todos os conjuntos':e.label)+' · '+perText(vgPeriod,V.R).toLowerCase()+(o?' · variação vs. período anterior':'');
-  $('#vg-chart-sub').textContent = (isAll?'Todos os conjuntos':e.label)+' · '+fRange(V.days[0],V.days[V.days.length-1])+(V.sel?' · faixa destacada = período escolhido':'');
+  lineChart($('#vg-chart'), V.series, { sel:V.sel, spend:V.spend, days:V.days, fmt:V.fmt });
+  renderSec('vg', m, o, both); $('#vg-sec-sub').textContent=(both?'Meta + Google':isAll?'Todos os conjuntos do Meta':e.label)+' · '+perText(vgPeriod,V.R).toLowerCase()+(o?' · variação vs. período anterior':'');
+  $('#vg-chart-sub').textContent = (both?'Meta + Google':isAll?'Todos os conjuntos do Meta':e.label)+' · '+fRange(V.days[0],V.days[V.days.length-1])+(V.sel?' · faixa destacada = período escolhido':'');
   $('#news').classList.toggle('off', !isAll);
-  $$('.vg-all').forEach(x=>x.hidden=!isAll || (x.id==='fb-recent' && !x.dataset.ready));
+  $$('.vg-all').forEach(x=>x.hidden=!isAll || (x.id==='hub' && !both));
   $('#ads').hidden = !M.adsByCampaign && !(isAll && vgPeriod==='cur');
   renderAds(e);
   if (isAll){ renderHub(); renderRank(); renderWho(); }
@@ -1061,11 +1073,11 @@ function renderAds(e){
   const when=key==='month'?`${cap1(monthName(MON[0]))}, até ontem`:'Últimos 7 dias'+(vgPeriod==='custom'?' (ranking fixo do Meta)':'');
   $('#ads-sub').textContent=when+' · o mesmo anúncio em públicos diferentes aparece somado';
   if (isAll && key==='last7'){
-    $('#ads-h').textContent='Anúncios que mais trouxeram leads';
+    $('#ads-h').textContent='Anúncios do Meta que mais trouxeram leads';
     $('#ads-grid').innerHTML=adsHTML(M.topAds||[], true)||EMPTY_ADS; return;
   }
   const list = isAll ? adsFor(Object.keys((M.adsByCampaign||{})[key]||{}), key) : adsFor(e.camps, key);
-  $('#ads-h').textContent=isAll?'Anúncios que mais trouxeram leads':'Anúncios de '+e.label;
+  $('#ads-h').textContent=isAll?'Anúncios do Meta que mais trouxeram leads':'Anúncios de '+e.label;
   $('#ads-grid').innerHTML=adsHTML(list.slice(0,6), isAll)||EMPTY_ADS;
 }
 const GENDER={ female:'Feminino', male:'Masculino', unknown:'Não informado' };
@@ -1090,15 +1102,15 @@ function vfunnel(el, steps){
 }
 const rate=(a,b)=>b>0?(a/b*100).toLocaleString('pt-BR',{maximumFractionDigits:2})+'%':'';
 /* CPM, CPC e CTR do link + Impressões → Cliques → Leads (como no painel da ABC) */
-function renderSec(pre, m, o){
+function renderSec(pre, m, o, both){
   const cpm=m.impr?m.spend/m.impr*1000:null, cpc=m.clicks?m.spend/m.clicks:null, ctr=m.impr?m.clicks/m.impr:null;
   const ocpm=o&&o.impr?o.spend/o.impr*1000:null, ocpc=o&&o.clicks?o.spend/o.clicks:null, octr=o&&o.impr?o.clicks/o.impr:null;
   $('#'+pre+'-cpm').textContent=cpm!=null?brl(cpm,2):'—'; $('#'+pre+'-cpc').textContent=cpc!=null?brl(cpc,2):'—'; $('#'+pre+'-ctr').textContent=ctr!=null?pct2(ctr):'—';
   $('#'+pre+'-cpm-d').innerHTML=cpm&&ocpm?chg(cpm/ocpm-1,false):''; $('#'+pre+'-cpc-d').innerHTML=cpc&&ocpc?chg(cpc/ocpc-1,false):''; $('#'+pre+'-ctr-d').innerHTML=ctr&&octr?chg(ctr/octr-1,true):'';
   vfunnel($('#'+pre+'-vf'), [
     { l:'Impressões', v:m.impr },
-    { l:'Cliques no link', v:m.clicks, r:rate(m.clicks,m.impr) },
-    { l:'Leads', v:m.leads, r:rate(m.leads,m.clicks), bg:'var(--pink)' },
+    { l:both?'Cliques':'Cliques no link', s:both?' (link no Meta + cliques no Google)':'', v:m.clicks, r:rate(m.clicks,m.impr) },
+    { l:'Leads', v:Math.round(m.leads), r:rate(m.leads,m.clicks), bg:'var(--pink)' },
   ]);
 }
 
@@ -1239,9 +1251,9 @@ function init(data){
   $('#ro-budget').textContent=brl(ACC.budget); $('#ro-camps').textContent=prods.length+' ativos'; $('#prod-count').textContent=prods.length;
   const live=ACC.today.spend>0; $('#ro-status').textContent=live?'● veiculando':'sem gasto hoje'; $('#ro-status').classList.toggle('ok',live);
 
-  $('#vg-product').innerHTML='<option value="all">Todos os conjuntos</option>'
-    +'<optgroup label="ATIVOS">'+prods.slice().sort((a,b)=>a.label.localeCompare(b.label,'pt-BR')).map(p=>`<option value="${p.id}">${esc(p.label)}</option>`).join('')+'</optgroup>'
-    +(ended.length?'<optgroup label="ENCERRADOS">'+ended.map(p=>`<option value="${p.id}">${esc(p.label)} (encerrado)</option>`).join('')+'</optgroup>':'');
+  $('#vg-product').innerHTML='<option value="all">Meta + Google</option><option value="meta">Só Meta Ads</option>'
+    +'<optgroup label="CONJUNTOS ATIVOS">'+prods.slice().sort((a,b)=>a.label.localeCompare(b.label,'pt-BR')).map(p=>`<option value="${p.id}">${esc(p.label)}</option>`).join('')+'</optgroup>'
+    +(ended.length?'<optgroup label="CONJUNTOS ENCERRADOS">'+ended.map(p=>`<option value="${p.id}">${esc(p.label)} (encerrado)</option>`).join('')+'</optgroup>':'');
   $('#vg-product').addEventListener('change',ev=>{ vgProduct=ev.target.value; renderVG(); });
   $$('#vg-periods .seg-btn').forEach(b=>b.addEventListener('click',()=>{ vgPeriod=b.dataset.p; $$('#vg-periods .seg-btn').forEach(x=>x.classList.toggle('active',x===b)); $('#vg-custom').hidden=vgPeriod!=='custom'; renderVG(); }));
   const from=$('#vg-from'), to=$('#vg-to'); [from,to].forEach(i=>{ i.min=DATA_START; i.max=Y; }); from.value=vgRange[0]; to.value=vgRange[1];
